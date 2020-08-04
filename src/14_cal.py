@@ -33,8 +33,20 @@ from datetime import datetime
 
 # x = input("Enter comma-separated numbers: ").split(',')
 # for inside in x:
+number_of_values = len(sys.argv)
 
-m = datetime.now().month
-y = datetime.now().year
-cal = calendar.TextCalendar()
-cal.prmonth(y, m)
+if number_of_values == 1:
+  m = datetime.now().month
+  y = datetime.now().year
+  calendar.TextCalendar().prmonth(y, m, w=5, l=2)
+if number_of_values == 2:  
+  m = int(sys.argv[1])
+  y = datetime.now().year
+  calendar.TextCalendar().prmonth(y, m, w=5, l=2)
+if number_of_values == 3:  
+  m = int(sys.argv[1])
+  y = int(sys.argv[2])
+  calendar.TextCalendar().prmonth(y, m, w=5, l=2)  
+else:
+  print("needs mounth and year")
+  sys.exit(1)
